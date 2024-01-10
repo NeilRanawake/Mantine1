@@ -8,11 +8,13 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { useMantineColorScheme } from '@mantine/core';
 import cx from 'clsx';
 import classes from './Demo.module.css';
+import MenuLinks from '../public/components/MenuLinks';
 import { useMediaQuery } from 'react-responsive';
 import React from 'react';
-import Link from 'next/link';
+import dynamic from 'next/dynamic'
 
 
+const NoSSR = dynamic(() => import('../public/components/MenuLinks'), { ssr: false })
 
 const groceries = [
   '🍎 Apples',
@@ -80,25 +82,7 @@ export default function IndexPage() {
     setDrawerOpened(false);
   };
 
-  const links = [
-    { label: 'Home', url: '/' },
-    { label: 'School', url: '/school' },
-    { label: 'About', url: '/about' },
-    { label: 'Contact', url: '/contact' },
-  ];
   
-  const MenuLinks = () => (
-    <>
-      {links.map((link) => (
-        <Link key={link.label} href={link.url} passHref>
-          {/* You can use either Button or Text, depending on your styling preference */}
-          <Button component="a" style={{ marginRight: '10px', marginBottom: '10px' }}>
-            {link.label}
-          </Button>
-        </Link>
-      ))}
-    </>
-  );
   
   return (
 
@@ -171,10 +155,13 @@ export default function IndexPage() {
   </div> 
   <Group  mx={10} justify='between' align='flex-end' style={{ height: '100%'}}>
         <Group gap='40' visibleFrom="md">
+        
         <div>
-        <MenuLinks/>
+      <NoSSR />
+      
+    </div>
         {/* Other content goes here */}
-        </div>
+        
         </Group>
         <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom='md' aria-label="Toggle navigation" />
         <Drawer opened={drawerOpened} onClose={closeDrawer} title={<span style={{ fontWeight: 'bold', color: 'blue' }}>Menu</span>}>
@@ -182,7 +169,11 @@ export default function IndexPage() {
         <div >
         {/* Drawer content goes here */}
         <Box mt={30} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'left', gap:'30px', minHeight: '100vh' }}>
-        <MenuLinks/>
+        <div>
+      <NoSSR />
+      
+    </div>
+       
         </Box>
         </div>
         </Drawer>
