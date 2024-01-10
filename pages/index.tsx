@@ -15,7 +15,7 @@ export default function IndexPage() {
     <div>
     <Header />
     </div>
-      <h1>Home Page</h1>
+      <h4>Home Page</h4>
       <Box maw='auto' mx="auto">
       <BackgroundImage
         src="/stairs.jpg"
@@ -24,7 +24,7 @@ export default function IndexPage() {
         
       >
         <Center p="md" style={{ textAlign: 'center'}}>
-          <Text c="red">
+          <Text c="white" style={{ fontWeight: 400 }}>
           Buddha Dhamma School International is not just another Dhamma School. It aims at a specific purpose. Spiritual progress of every individual right up to enlightenment is our aim
           </Text>
         </Center>
