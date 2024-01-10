@@ -1,3 +1,4 @@
+'use client'
 import { TextInput, Box, Text, Button, Group, Combobox, useCombobox, CloseButton, Drawer  } from "@mantine/core";
 import { ActionIcon, useComputedColorScheme, Burger  } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
@@ -11,26 +12,6 @@ import { useMediaQuery } from 'react-responsive';
 import React from 'react';
 import Link from 'next/link';
 
-
-const links = [
-  { label: 'Home', url: '/' },
-  { label: 'School', url: '/school' },
-  { label: 'About', url: '/about' },
-  { label: 'Contact', url: '/contact' },
-];
-
-const MenuLinks = () => (
-  <>
-    {links.map((link) => (
-      <Link key={link.label} href={link.url} passHref>
-        {/* You can use either Button or Text, depending on your styling preference */}
-        <Button component="a" style={{ marginRight: '10px', marginBottom: '10px' }}>
-          {link.label}
-        </Button>
-      </Link>
-    ))}
-  </>
-);
 
 
 const groceries = [
@@ -98,6 +79,26 @@ export default function IndexPage() {
   const closeDrawer = () => {
     setDrawerOpened(false);
   };
+
+  const links = [
+    { label: 'Home', url: '/' },
+    { label: 'School', url: '/school' },
+    { label: 'About', url: '/about' },
+    { label: 'Contact', url: '/contact' },
+  ];
+  
+  const MenuLinks = () => (
+    <>
+      {links.map((link) => (
+        <Link key={link.label} href={link.url} passHref>
+          {/* You can use either Button or Text, depending on your styling preference */}
+          <Button component="a" style={{ marginRight: '10px', marginBottom: '10px' }}>
+            {link.label}
+          </Button>
+        </Link>
+      ))}
+    </>
+  );
   
   return (
 
@@ -180,7 +181,7 @@ export default function IndexPage() {
 
         <div >
         {/* Drawer content goes here */}
-        <Box mt={30} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'left', gap:'30', minHeight: '100vh' }}>
+        <Box mt={30} style={{ display: 'flex', flexDirection: 'column', justifyContent: 'left', gap:'30px', minHeight: '100vh' }}>
         <MenuLinks/>
         </Box>
         </div>
